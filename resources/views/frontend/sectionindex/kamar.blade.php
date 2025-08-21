@@ -1,4 +1,4 @@
-<h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">OUR ROOMS</h2>
+<h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">AULA KAMI</h2>
 <div class="container">
     <div class="row">
 
@@ -15,13 +15,13 @@
                         <h5 class="card-title">{{ $r->type->name }} #{{ $r->no }}</h5>
                         <h6 class="mb-3 text-success">IDR {{ number_format($r->price) }} </h6>
                         <div class="guests mb-2">
-                            <h6 class="mb-1">Guests</h6>
+                            <h6 class="mb-1">Tamu</h6>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 {{ $r->capacity }}
                             </span>
                         </div>
                         <div class="features mb-4">
-                            <h6 class="mb-1">Features</h6>
+                            <h6 class="mb-1"></h6>
                             @if ($r->capacity <= 5)
                                 <span class="badge rounded-pill bg-light text-dark text-wrap">
                                     2 Rooms
@@ -56,7 +56,7 @@
                             </span>
                         </div>
                         <div class="Facilities mb-3">
-                            <h6 class="mb-1">Facilities</h6>
+                            <h6 class="mb-1">Fasilitas</h6>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 Wifi
                             </span>
@@ -67,31 +67,31 @@
                                 AC
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
-                                Room Heater
+                                Infokus
                             </span>
                         @else
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            {{-- <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 4 Rooms
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 2 Bathroom
-                            </span>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            </span> --}}
+                            {{-- <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 2 Balcony
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 6 Sofa
-                            </span>
+                            </span> --}}
                         </div>
                         <div class="Facilities mb-3">
-                            <h6 class="mb-1">Facilities</h6>
+                            {{-- <h6 class="mb-1">Facilities</h6>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 Wifi
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 Television
-                            </span>
-                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            </span> --}}
+                            {{-- <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 AC
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
@@ -99,12 +99,12 @@
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 Smooke Room
-                            </span>
+                            </span> --}}
         @endif
     </div>
     <div class="d-flex justify-content-evenly mb-2">
-        <a href="/rooms/{{ $r->no }}" class="btn btn-sm border border-black btn- shadow-none">Book Now</a>
-        <a href="/rooms/{{ $r->no }}" class="btn btn-sm btn-dark shadow-none">More details</a>
+        <a href="/rooms/{{ $r->no }}" class="btn btn-sm border border-black btn- shadow-none">pesan sekarang</a>
+        <a href="/rooms/{{ $r->no }}" class="btn btn-sm btn-dark shadow-none">Lebih detail</a>
     </div>
 
 </div>
@@ -112,7 +112,7 @@
 </div>
 @endforeach
 <div class="col-lg-12 text-center mt-5">
-    <a href="/rooms" class="btn btn-sm btn-dark rounded-0 fw-bold shadow-none">More Rooms</a>
+    <a href="/rooms" class="btn btn-sm btn-dark rounded-0 fw-bold shadow-none">Aula</a>
 </div>
 </div>
 </div>

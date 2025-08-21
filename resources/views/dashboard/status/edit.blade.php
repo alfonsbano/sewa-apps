@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="card border-0 shadow">
                     <div class="card-header">
-                        <h4>Edit status Kamar {{ $status->name }}</h4>
+                        <h4>Edit status Aula {{ $status->name }}</h4>
                     </div>
                     <div class="card-body">
                         <div class="col-md-auto">
@@ -34,7 +34,7 @@
                                     <div class="col-md-10 mt-3">
                                         <label for="info" class="form-label"> Description <span
                                                 style="font-style: italic;">(required)</span></label>
-                                        <textarea placeholder="Sebutan bagi kamar yang kosong" name="info" id="info"rows="3" class="form-control">{{ $status->info }}</textarea>
+                                        <textarea placeholder="Sebutan bagi Aula yang kosong" name="info" id="info"rows="3" class="form-control">{{ $status->info }}</textarea>
                                     </div>
                                 </div>
                                 <button class="btn btn-dark mt-4" type="submit"> SUBMIT </button>

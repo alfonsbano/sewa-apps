@@ -1,6 +1,6 @@
 @extends('dashboard.layout.main')
 @section('title')
-    <title>Dashboard | Kamar</title>
+    <title>Dashboard | Aula</title>
 @endsection
 @section('content')
     <!-- Page Heading -->
@@ -37,8 +37,8 @@
                                 <th>No</th>
                                 <th>Type</th>
                                 <th>Status</th>
-                                <th>Capacity</th>
-                                <th>Price/day</th>
+                                <th>kapasitas</th>
+                                <th>Harga/Hari</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -100,8 +100,8 @@
                                 <th>No</th>
                                 <th>Type</th>
                                 <th>Status</th>
-                                <th>Capacity</th>
-                                <th>Price/day</th>
+                                <th>Kapasitas</th>
+                                <th>Harga/Hari</th>
                                 <th width="14%">Action</th>
                             </tr>
                         </tfoot>

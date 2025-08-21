@@ -7,88 +7,118 @@ use App\Models\Payment;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Notification;
 use RealRashid\SweetAlert\Facades\Alert;
-use Termwind\Components\Raw;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        /* ────────────────────────
+         | 1. Akses & pembatasan  |
+         ────────────────────────*/
         if (auth()->guest()) {
             return redirect('/login');
         }
         if (auth()->user()->is_admin == 0) {
             abort(404);
         }
-        // Menghitung total harga dari semua pembayaran dengan status "Down Payment"
-        $payments = Payment::where('status', 'Down Payment')->get();
+
+        /* ────────────────────────
+         | 2. Data pembayaran DP  |
+         ────────────────────────*/
+        $payments    = Payment::where('status', 'Down Payment')->get();
         $totalAmount = $payments->sum('price');
 
-        // Menghitung total jumlah pembayaran per bulan
-        $paymentsPerMonth = $payments->groupBy(function ($payment) {
-            return Carbon::parse($payment->created_at)->format('M');
-        });
+        /* ───────────────────────────────
+         | 3. Inisialisasi 12 bulan (0) |
+         ───────────────────────────────*/
+        $allMonths = collect(range(1, 12))
+            ->mapWithKeys(fn ($m) => [
+                Carbon::create()->month($m)->format('M') => 0
+            ])
+            ->all();                         // ['Jan'=>0, ..., 'Dec'=>0]
 
-        $months = [];
-        $count = [];
-        $qty = [];
+        $count  = $qty = $allMonths;
+        $months = array_keys($allMonths);     // untuk grafik label
 
-        foreach ($paymentsPerMonth as $month => $paymentGroup) {
-            $months[] = $month;
-            $total = $paymentGroup->sum('price');
-            $count[$month] = $total;
-            $qty[] = $paymentGroup->count();
+        /* ─────────────────────────
+         | 4. Hitung per‑bulan     |
+         ─────────────────────────*/
+        $paymentsPerMonth = $payments->groupBy(
+            fn ($p) => Carbon::parse($p->created_at)->format('M')
+        );
+
+        foreach ($paymentsPerMonth as $month => $group) {
+            $count[$month] = $group->sum('price');
+            $qty[$month]   = $group->count();
         }
 
-        // dd($months);
-        $currentMonth = Carbon::now()->format('M');
-        $monthCount = isset($count[$currentMonth]) ? $count[$currentMonth] : 0;
-        $currentMonthNumber = Carbon::now()->format('m') - 0;
-        $previousMonthNumber = $currentMonthNumber - 1;
-        $previousMonth = Carbon::createFromDate(null, $previousMonthNumber)->format('M');
-        $transactionCount = Transaction::where('status', 'Reservation')->count();
-        $countPreviousMonth = $count["Jul"];
-        // dd($countPreviousMonth);
-        $percentage = $countPreviousMonth > 0 ? ($monthCount / $countPreviousMonth) * 100 : 0;
+        /* ───────────────────────────────
+         | 5. Angka bulan sekarang & prev |
+         ───────────────────────────────*/
+        $currentMonth       = Carbon::now()->format('M');           // ex: 'Jun'
+        $previousMonth      = Carbon::now()->subMonth()->format('M');
+        $monthCount         = $count[$currentMonth]  ?? 0;
+        $countPreviousMonth = $count[$previousMonth] ?? 0;
 
-        $kiri = 0;
-        $kanan = 0;
+        /* ──────────────────────
+         | 6. Persentase growth |
+         ──────────────────────*/
+        $percentage = $countPreviousMonth > 0
+            ? ($monthCount / $countPreviousMonth) * 100
+            : 0;
 
+        /* ─────────────────────────────
+         | 7. Konversi ke bar progress |
+         ─────────────────────────────*/
+        [$kiri, $kanan] = [0, 0];
         if ($percentage > 100) {
-            $kiri = 100 / $percentage * 100;
+            $kiri  = 100 / $percentage * 100;
             $kanan = ($percentage - 100) / $percentage * 100;
-        } else if ($percentage == 0) {
-            $kiri = 0;
-            $kanan = 0;
         }
 
-        return view('dashboard.index', compact('transactionCount', 'kiri', 'kanan', 'qty', 'totalAmount', 'months', 'count', 'monthCount', 'percentage'));
+        /* ───────────────────────
+         | 8. Tambahan statistik |
+         ───────────────────────*/
+        $transactionCount = Transaction::where('status', 'Reservation')->count();
+
+        /* ─────────────────
+         | 9. Kirim ke view |
+         ─────────────────*/
+        return view('dashboard.index', compact(
+            'transactionCount', 'kiri', 'kanan',
+            'qty', 'totalAmount', 'months',
+            'count', 'monthCount', 'percentage'
+        ));
     }
+
+    /* ============================================================
+       Sisa method tetap seperti sebelumnya
+       ============================================================*/
 
     public function notifiable(Request $request)
     {
-        // dd($request);
         if (auth()->guest()) {
             return redirect('/login');
         }
         if (auth()->user()->is_admin == 0) {
             abort(404);
         }
-        // $no = json_decode($notif->data)->message[5] . json_decode($notif->data)->message[6] . json_decode($notif->data)->message[7];
 
-        return redirect('/dashboard/order', compact('no'));
+        // Logika lain jika diperlukan
+        return redirect('/dashboard/order');
     }
 
     public function markall()
     {
         $notif = Notifications::where('status', 'unread')->get();
         foreach ($notif as $n) {
-            $n->status = 'read';
-            $n->read_at = Carbon::now();
+            $n->status   = 'read';
+            $n->read_at  = Carbon::now();
             $n->save();
         }
-        Alert::success('Success', 'Notif Telah Terbaca!');
+
+        Alert::success('Success', 'Semua notifikasi ditandai terbaca!');
         return redirect('/dashboard/order');
     }
 }

@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DONQUIXOTE | REGISTER</title>
+	<title>SEWA AULA PALAPA | REGISTER</title>
 	<link rel="stylesheet" type="text/css" href="/loginn/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+    html, body {
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .container {
+        min-height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+    }
+
+    .login-content {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+
+        .img {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+	<link rel="icon" type="image/png" href="/loginn/img/logoo.png">
+
 </head>
 <body>
     @if (session()->has('loginError'))
@@ -20,13 +54,16 @@
 	<img class="wave" src="/loginn/img/wave.png">
 	<div class="container">
 		<div class="img">
-			<img src="/loginn/img/bg.svg">
+			<img src="/loginn/img/Chatgpt.png">
 		</div>
 		<div class="login-content">
 			<form action="/register" method="post">
                 @csrf
 				<img src="/loginn/img/avatar.svg">
 				<h2 class="title">Register</h2>
+				<p style="text-align: center; color: #555; font-size: 14px;">
+    Setelah register jangan lupa mengisi data diri di akun anda. Terima Kasih!
+</p>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>

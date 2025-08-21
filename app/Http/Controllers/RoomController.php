@@ -163,7 +163,6 @@ class RoomController extends Controller
     }
 
 
-
     public function roomshow(Request $request, $no)
     {
         $room = Room::where('no', $no)->first();
@@ -195,3 +194,5 @@ class RoomController extends Controller
         return view('frontend.room', compact('room', 'customer', 'request'));
     }
 }
+
+

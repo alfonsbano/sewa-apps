@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | ORDER NOW</title>
+    <title>SEWA AULA PALAPA | ORDER NOW</title>
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row mb-3">
-                                            <label for="room_number" class="col-sm-2 col-form-label">Room</label>
+                                            <label for="room_number" class="col-sm-2 col-form-label">Aula</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" id="room_no" name="room_no"
                                                     placeholder="col-form-label" value="{{ $room->no }} " disabled>

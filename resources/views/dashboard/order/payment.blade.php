@@ -1,109 +1,107 @@
 @extends('dashboard.layout.main')
+
 @section('title')
     <title>Dashboard | Payment</title>
 @endsection
+
 @section('content')
     <!-- Page Heading -->
-
     <div class="container mt-3">
         <div class="row justify-content-md-center">
+            {{-- =========================== FORM PEMBAYARAN =========================== --}}
             <div class="col-md-8 mt-2">
                 <div class="card shadow border-0">
                     <div class="card-body p-4">
                         <div class="row">
                             <div class="col-sm-12">
+                                {{-- Room --}}
                                 <div class="row mb-3">
-                                    <label for="room_number" class="col-sm-2 col-form-label">Room</label>
+                                    <label class="col-sm-2 col-form-label">Room</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="room_no" name="room_no"
-                                            placeholder="col-form-label" value="{{ $transaction->Room->no }} " readonly>
+                                        <input class="form-control" value="{{ $transaction->Room->no }}" readonly>
                                     </div>
                                 </div>
 
+                                {{-- Check‑in --}}
                                 <div class="row mb-3">
-                                    <label for="check_in" class="col-sm-2 col-form-label">Check In</label>
+                                    <label class="col-sm-2 col-form-label">Check In</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="check_in" name="check_in"
-                                            placeholder="col-form-label"
-                                            value="{{ Carbon\Carbon::parse($transaction->check_in)->isoformat('D MMMM Y') }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="check_out" class="col-sm-2 col-form-label">Check Out</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="check_out" name="check_out"
-                                            placeholder="col-form-label"
-                                            value="{{ Carbon\Carbon::parse($transaction->check_out)->isoformat('D MMMM Y') }}"
-                                            readonly>
+                                        <input class="form-control"
+                                               value="{{ $transaction->check_in->isoFormat('D MMMM Y') }}" readonly>
                                     </div>
                                 </div>
 
+                                {{-- Check‑out --}}
                                 <div class="row mb-3">
-                                    <label for="room_price" class="col-sm-2 col-form-label">Room Price</label>
+                                    <label class="col-sm-2 col-form-label">Check Out</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="room_price" name="room_price"
-                                            placeholder="col-form-label"
-                                            value="IDR {{ number_format($transaction->Room->price) }} " readonly>
+                                        <input class="form-control"
+                                               value="{{ $transaction->check_out->isoFormat('D MMMM Y') }}" readonly>
                                     </div>
                                 </div>
 
+                                {{-- Harga kamar --}}
                                 <div class="row mb-3">
-                                    <label for="daycount" class="col-sm-2 col-form-label">Days Count</label>
+                                    <label class="col-sm-2 col-form-label">Room Price</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="daycount" name="daycount"
-                                            placeholder="col-form-label"
-                                            value="{{ $transaction->getDateDifferenceWithPlural($transaction->check_in, $transaction->check_out) }} Day"
-                                            readonly>
+                                        <input class="form-control"
+                                               value="IDR {{ number_format($transaction->Room->price) }}" readonly>
                                     </div>
                                 </div>
 
+                                {{-- Durasi hari --}}
                                 <div class="row mb-3">
-                                    <label for="total_price" class="col-sm-2 col-form-label">Total Price</label>
+                                    <label class="col-sm-2 col-form-label">Days Count</label>
                                     <div class="col-sm-10">
-                                        <input type="text" id="total_price"
-                                            class="form-control"value="IDR {{ number_format($transaction->getTotalPrice($transaction->room->price, $transaction->check_in, $transaction->check_out)) }}"
-                                            readonly>
+                                        <input class="form-control"
+                                               value="{{ $transaction->getDateDifferenceWithPlural() }}" readonly>
                                     </div>
                                 </div>
 
+                                {{-- Total harga --}}
                                 <div class="row mb-3">
-                                    <label for="Paidoff" class="col-sm-2 col-form-label">Paid Off</label>
+                                    <label class="col-sm-2 col-form-label">Total Price</label>
                                     <div class="col-sm-10">
-                                        <input type="text" id="Paidoff"
-                                            class="form-control"value="IDR {{ number_format($transaction->getTotalPayment()) }}"
-                                            readonly>
+                                        <input class="form-control"
+                                               value="IDR {{ number_format($transaction->getTotalPrice()) }}" readonly>
                                     </div>
                                 </div>
 
+                                {{-- Sudah dibayar --}}
                                 <div class="row mb-3">
-                                    <label for="Paidoff" class="col-sm-2 col-form-label">Insufficient</label>
-                                    {{-- <div class="col-sm-10"> --}}
+                                    <label class="col-sm-2 col-form-label">Paid Off</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control"
-                                            value="IDR {{ number_Format($transaction->getTotalPrice($transaction->Room->price, $transaction->check_in, $transaction->check_out) - $transaction->getTotalPayment()) }}"
-                                            readonly>
+                                        <input class="form-control"
+                                               value="IDR {{ number_format($transaction->getTotalPayment()) }}" readonly>
                                     </div>
-                                    {{-- </div>  --}}
-
-
                                 </div>
+
+                                {{-- Kekurangan --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Insufficient</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control"
+                                               value="IDR {{ number_format($transaction->getTotalPrice() - $transaction->getTotalPayment()) }}"
+                                               readonly>
+                                    </div>
+                                </div>
+
                                 <hr>
+
+                                {{-- Form input pembayaran --}}
                                 <div class="col-sm-12 mt-2">
                                     <form method="POST" action="{{ route('paydebt') }}">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $transaction->id }}">
                                         <div class="row mb-3">
-                                            <label for="payment" class="col-sm-2 col-form-label">Payment</label>
+                                            <label class="col-sm-2 col-form-label">Payment</label>
                                             <div class="col-sm-10">
-                                                <input type="text"
-                                                    class="form-control @error('payment') is-invalid @enderror"
-                                                    id="payment" name="payment" placeholder="Input payment here"
-                                                    value="{{ old('payment') }}">
+                                                <input id="payment" name="payment" type="text"
+                                                       class="form-control @error('payment') is-invalid @enderror"
+                                                       placeholder="Input payment here"
+                                                       value="{{ old('payment') }}">
                                                 @error('payment')
-                                                    <div class="text-danger mt-1">
-                                                        {{ $message }}
-                                                    </div>
+                                                    <div class="text-danger mt-1">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
@@ -111,7 +109,7 @@
                                             <div class="col-sm-2"></div>
                                             <div class="col-sm-10" id="showPaymentType"></div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary float-end">Pay </button>
+                                        <button type="submit" class="btn btn-primary float-end">Pay</button>
                                     </form>
                                 </div>
                             </div>
@@ -119,72 +117,54 @@
                     </div>
                 </div>
             </div>
+
+            {{-- =========================== PROFIL CUSTOMER =========================== --}}
             <div class="col-md-4 mt-2">
                 <div class="card shadow border-0">
-                    {{-- {{ dd($transaction->User->image) }} --}}
-                    @if ($transaction->User->image != null)
+                    @if ($transaction->User->image)
                         <img src="{{ asset('storage/' . $transaction->User->image) }}"
-                            style="border-top-right-radius: 0.5rem; border-top-left-radius: 0.5rem">
+                             style="border-top-right-radius:.5rem;border-top-left-radius:.5rem">
                     @else
                         <img src="/img/default-user.jpg"
-                            style="border-top-right-radius: 0.5rem; border-top-left-radius: 0.5rem">
+                             style="border-top-right-radius:.5rem;border-top-left-radius:.5rem">
                     @endif
                     <div class="card-body">
                         <table>
                             <tr>
-                                <td style="text-align: center; width:50px">
-                                    <span>
-                                        <i
-                                            class="fas {{ $transaction->Customer->gender == 'Male' ? 'fa-male' : 'fa-female' }}">
-                                        </i>
-                                    </span>
+                                <td style="width:50px;text-align:center">
+                                    <i class="fas {{ $transaction->Customer->gender == 'Male' ? 'fa-male' : 'fa-female' }}"></i>
                                 </td>
-                                <td>
-                                    {{ $transaction->Customer->name }}
-                                </td>
+                                <td>{{ $transaction->Customer->name }}</td>
                             </tr>
                             <tr>
-                                <td style="text-align: center; ">
-                                    <span>
-                                        <i class="fas fa-user-md"></i>
-                                    </span>
-                                </td>
+                                <td style="text-align:center"><i class="fas fa-user-md"></i></td>
                                 <td>{{ $transaction->Customer->job }}</td>
                             </tr>
                             <tr>
-                                <td style="text-align: center; ">
-                                    <span>
-                                        <i class="fas fa-birthday-cake"></i>
-                                    </span>
-                                </td>
-                                <td>
-                                    {{ $transaction->Customer->birthdate }}
-                                </td>
+                                <td style="text-align:center"><i class="fas fa-birthday-cake"></i></td>
+                                <td>{{ $transaction->Customer->birthdate }}</td>
                             </tr>
                             <tr>
-                                <td style="text-align: center; ">
-                                    <span>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </span>
-                                </td>
-                                <td>
-                                    {{ $transaction->Customer->address }}
-                                </td>
+                                <td style="text-align:center"><i class="fas fa-map-marker-alt"></i></td>
+                                <td>{{ $transaction->Customer->address }}</td>
                             </tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- Format mata uang realtime saat ketik --}}
         <script src="/style/js/jquery.js"></script>
         <script>
-            $('#payment').keyup(function() {
-                $('#showPaymentType').text('Rp. ' + parseFloat($(this).val(), 10).toFixed(2).replace(
-                        /(\d)(?=(\d{3})+\.)/g, "$1.")
-                    .toString());
+            $('#payment').keyup(function () {
+                const val = parseFloat($(this).val() || 0);
+                $('#showPaymentType').text('Rp. ' + val.toLocaleString('id-ID', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }));
             });
         </script>
-    @endsection
-
-
-    <!-- End of Main Content -->
+    </div>
+@endsection
+<!-- End of Main Content -->

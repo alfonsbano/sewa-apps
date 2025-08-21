@@ -6,7 +6,7 @@
          <div class="sidebar-brand-icon">
              <i class="fas fa-building"></i>
          </div>
-         <div class="sidebar-brand-text mx-3">Donquixote</div>
+         <div class="sidebar-brand-text mx-3">SEWA AULA PALAPA</div>
      </a>
 
      <!-- Divider -->
@@ -37,9 +37,9 @@
          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
              <div class="bg-white py-2 collapse-inner rounded">
                  <h6 class="collapse-header">Inner</h6>
-                 <a class="collapse-item" href="/dashboard/data/room">Room</a>
-                 <a class="collapse-item" href="/dashboard/data/status">Status Room</a>
-                 <a class="collapse-item" href="/dashboard/data/type">Type Room</a>
+                 <a class="collapse-item" href="/dashboard/data/room">Aula</a>
+                 <a class="collapse-item" href="/dashboard/data/status">Status Aula</a>
+                 <a class="collapse-item" href="/dashboard/data/type">Type Aula</a>
              </div>
          </div>
      </li>
@@ -82,7 +82,7 @@
                  <h6 class="collapse-header">Order now:</h6>
                  <a class="collapse-item" href="/dashboard/order">Order</a>
                  <h6 class="collapse-header">Data Transactions:</h6>
-                 <a class="collapse-item" href="/dashboard/order/history-pay">History Payment</a>
+                 <a class="collapse-item" href="/dashboard/order/history-pay">History Pembayaran</a>
 
              </div>
          </div>

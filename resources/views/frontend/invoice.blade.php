@@ -59,15 +59,15 @@
                             <header class="clearfix">
                         <h1 class="mb-5" style="text-align: center">INVOICE <span class="h4">#{{ $p->invoice }}</span></h1>
                         <div id="company" class="clearfix">
-                            <div>Cakra Gusdani</div>
-                            <div>Smk Bina Mandiri Multimedia,<br /> Cileungsi, Jawa Barat</div>
-                            <div>+62 85773674231</div>
-                            <div><a>Anggergusdani@gmail.com</a></div>
+                            <div>Aula Palapa</div>
+                            <div>Dinas Komunikasi dan Informatika Provinsi NTT<br /> , Jl.Palapa</div>
+                            <div>+62 81352510913</div>
+                            <div><a>dinaskominfontt.prov1@gmail.com</a></div>
                         </div>
                         <div id="project">
-                            <div><span>Booking</span> ROOM  {{$p->transaction->room->no}}  </div>
+                            <div><span>Booking</span> Aula  {{$p->transaction->room->no}}  </div>
                             <div><span>CLIENT</span> {{$p->transaction->customer->name}}</div>
-                            <div><span>ADDRESS</span> {{$p->transaction->customer->address}}
+                            <div><span>Alamat</span> {{$p->transaction->customer->address}}
                             </div>
                             <div><span>EMAIL</span> <a> {{$p->transaction->customer->user->email }}</a></div>
                             <div><span>DATE</span> {{Carbon\Carbon::parse($p->transaction->check_in)->isoformat('D MMM YYYY')}}</div>

@@ -143,7 +143,11 @@ class TransactionController extends Controller
         $stayfrom = Carbon::parse($request->from);
         $stayuntil = Carbon::parse($request->to);
         $price = $room->price;
-        $dayDifference = $stayfrom->diffindays($stayuntil);
+        // $dayDifference = $stayfrom->diffindays($stayuntil);
+        // $dayDifference = max(1, $stayfrom->diffInDays($stayuntil));
+        // + $dayDifference = $stayfrom->diffInDays($stayuntil) + 1;
+        $dayDifference = $stayfrom->clone()->startOfDay()
+                ->diffInDays( $stayuntil->clone()->startOfDay() ) + 1;
         $total = $price * $dayDifference;
         $downPayment = ($price * $dayDifference) * 0.5;
         return view('dashboard.order.confirmation', compact('uri', 'dayDifference', 'customer', 'room', 'stayfrom', 'stayuntil', 'total', 'downPayment'));
@@ -154,7 +158,12 @@ class TransactionController extends Controller
     {
         $checkin = Carbon::parse($request->check_in);
         $checkout = Carbon::parse($request->check_out);
-        $dayDifference = $checkin->diffindays($checkout);
+        // $dayDifference = $checkin->diffindays($checkout);
+        //  $dayDifference = max(1, $checkin->diffInDays($checkout));
+
+        // + $dayDifference = $checkin->diffInDays($checkout) + 1;
+        $dayDifference = $checkin->clone()->startOfDay()
+                ->diffInDays( $checkout->clone()->startOfDay() ) + 1;
         $rooms = Room::where('id', $request->room)->first();
         $customers = Customer::where('id', $request->customer)->first();
         $minimumDownPayment = ($rooms->price * $dayDifference) * 0.5;
@@ -183,7 +192,7 @@ class TransactionController extends Controller
         }
 
         event(new RefreshDashboardEvent("Someone reserved a room"));
-        Alert::success('Success', 'Room ' . $rooms->no . ' Has been reservated by ' . $customers->name);
+        Alert::success('Success', 'Aula ' . $rooms->no . ' Telah dipesan oleh ' . $customers->name);
         return redirect()->route('transaction.index');
     }
 

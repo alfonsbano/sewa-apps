@@ -1,5 +1,5 @@
 @extends('frontend.inc.main')
-@section('title') <title>DONQUIXOTE | HOTEL MEWAH DENGAN HARGA MURAH</title>@endsection
+@section('title') <title>SEWA AULA PALAPA | AULA DENGAN HARGA MURAH</title>@endsection
 
 @section('content')
 <section class="swiper-image-content">

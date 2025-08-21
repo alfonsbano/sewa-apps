@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DONQUIXOTE | Edit Fotor Profile</title>
+	<title>SEWA AULA PALAPA | Edit Fotor Profile</title>
 	<!-- CSS only -->
 @include('frontend.inc.links')
 
@@ -39,7 +39,7 @@
 
               @endif</p>
               <div class="d-flex justify-content-center mb-2">
-                  <a href="/myaccount" class="btn btn-primary">Back</a>
+                  <a href="/myaccount" class="btn btn-primary">Kembali</a>
                 @if (!$user->image == null)
                 <a href="/myaccount/{{$user->id}}/delete-foto" class="btn btn-danger ms-2">Hapus Foto</a>
                 @endif

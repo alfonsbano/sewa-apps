@@ -19,7 +19,7 @@
                                 <th width="4%">#</th>
                                 {{-- <th class="text-center">ID</th> --}}
                                 <th class="text-center">Customer</th>
-                                <th class="text-center">Kamar</th>
+                                <th class="text-center">Aula</th>
                                 <th class="text-center">Price</th>
                                 <th class="text-center">Date</th>
                                 <th class="text-center">Bukti</th>
@@ -72,7 +72,7 @@
                                 <th width="4%">#</th>
                                 {{-- <th class="text-center">ID</th> --}}
                                 <th class="text-center">Customer</th>
-                                <th class="text-center">Kamar</th>
+                                <th class="text-center">Aula</th>
                                 <th class="text-center">Price</th>
                                 <th class="text-center">Date</th>
                                 <th class="text-center">Bukti</th>
@@ -97,8 +97,8 @@
                                 <th width="4%">#</th>
                                 {{-- <th class="text-center">ID</th> --}}
                                 <th class="text-center">Customer</th>
-                                <th class="text-center">Kamar</th>
-                                <th class="text-center">Price</th>
+                                <th class="text-center">Aula</th>
+                                <th class="text-center">Harga</th>
                                 <th class="text-center">Date</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
@@ -124,8 +124,8 @@
                                 <th width="4%">#</th>
                                 {{-- <th class="text-center">ID</th> --}}
                                 <th class="text-center">Customer</th>
-                                <th class="text-center">Kamar</th>
-                                <th class="text-center">Price</th>
+                                <th class="text-center">Aula</th>
+                                <th class="text-center">Harga</th>
                                 <th class="text-center">Date</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>

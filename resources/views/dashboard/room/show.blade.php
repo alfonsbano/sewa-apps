@@ -1,13 +1,13 @@
 @extends('dashboard.layout.main')
 @section('title')
-<title>Dashboard | Kamar {{ $room->no }}</title>
+<title>Dashboard | Aula {{ $room->no }}</title>
 @endsection
 @section('content')
     <!-- Page Heading -->
     <div class="container">
         <div class="col-md-6">
             <div class="d-sm-flex align-items-center mb-4">
-            <h1 class="h2 mb-0 text-dark-1000">Kamar {{ $room->no }}</h1>
+            <h1 class="h2 mb-0 text-dark-1000">Aula {{ $room->no }}</h1>
             </div>
         </div>
 
@@ -47,8 +47,8 @@
                     <table class="table table-sm table-bordered">
                         <thead class="table-secondary">
                             <tr>
-                                <th>Capacity</th>
-                                <th>Price/day</th>
+                                <th>kapasitas</th>
+                                <th>Harga/Hari</th>
                                 <th>Type</th>
                             </tr>
                         </thead>

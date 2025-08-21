@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | PROFILE EDIT</title>
+    <title>SEWA AULA | PROFIL EDIT</title>
 @endsection
 
 @section('content')
@@ -173,7 +173,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Job</p>
+                                        <p class="mb-0">pekerjaan</p>
                                     </div>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control " name="job" id="job"
@@ -205,7 +205,7 @@
                         <form action="/myaccount/{{ $user->id }}/update" method="post">
                             @csrf
 
-                            <h5>CHANGE PASSWORD</h5>
+                            <h5>GANTI PASSWORD</h5>
                     </div>
                     <div class="row mt-3">
                         <div class="col-sm-3">

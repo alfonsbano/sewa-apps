@@ -10,7 +10,7 @@
                         <div class="container">
                         <div class="card">
                                 <div class="card-header">
-                                  <h4>Tambah data Status Kamar</h4>
+                                  <h4>Tambah data Status Aula</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-auto">
@@ -30,7 +30,7 @@
                                             <div class="row">
                                                 <div class="col-md-10 mt-3">
                                                     <label for="info" class="form-label"> Description  <span style="font-style: italic;">(required)</span></label>
-                                                    <textarea placeholder="Sebutan bagi kamar yang kosong" name="info" id="info"rows="3" class="form-control"></textarea>
+                                                    <textarea placeholder="Sebutan bagi aula yang kosong" name="info" id="info"rows="3" class="form-control"></textarea>
                                                 </div>
                                             </div>
 

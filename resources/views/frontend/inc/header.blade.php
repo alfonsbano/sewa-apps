@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-lg px-lg-3 py-lg-2 shadow sticky-top">
     <div class="container">
-        <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="/"><img src="/img/logo.png" style="max-width:90px"> <span class="h5 fw-bold fs-3"> DONQUIXOTE </span> </a>
+        <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="/">
+  <img src="{{ asset('img/logoo.png') }}" alt="Logo Kominfo" style="max-width:50px; margin-right:10px;">
+  <span class="h5 fw-bold fs-3">SEWA AULA PALAPA DISKOMINFO NTT</span>
+</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Donquixote</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">SEWA AULA PALAPA</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -15,16 +18,19 @@
                           <a class="nav-link {{ Request::routeIs('index*') ? 'active' : ''}}" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link me-2 {{ Request::is('rooms*') ? 'active' : ''}} " href="/rooms">Rooms</a>
+                          <a class="nav-link me-2 {{ Request::is('rooms*') ? 'active' : ''}} " href="/rooms">Aula</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link me-2 {{ Request::is('facilities*') ? 'active' : ''}}" href="/facilities">Facilities</a>
+                          <a class="nav-link me-2 {{ Request::is('facilities*') ? 'active' : ''}}" href="/facilities">Fasilitas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link me-2 {{ Request::is('about*') ? 'active' : ''}}" href="/about">About</a>
+                            <a class="nav-link me-2 {{ Request::is('about*') ? 'active' : ''}}" href="/about">Tentang</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link me-2 {{ Request::is('contact*') ? 'active' : ''}}" href="/contact">Contact</a>
+                          <a class="nav-link me-2 {{ Request::is('contact*') ? 'active' : ''}}" href="/contact">kontak</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link me-2 {{ Request::is('login*') ? 'active' : ''}}" href="/login">Login</a>
                         </li>
 
                         @if(auth()->user())

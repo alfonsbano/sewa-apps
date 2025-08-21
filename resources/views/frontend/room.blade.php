@@ -1,6 +1,6 @@
 @extends('frontend.inc.main')
 @section('title')
-    <title>DONQUIXOTE | KAMAR #{{ $room->no }}</title>
+    <title>SEWA AULA PALAPA | AULA #{{ $room->no }}</title>
 @endsection
 
 @section('css')
@@ -140,7 +140,7 @@
             </div>
             <div class="col-md-6 col-lg-4 col-4 text-end">
                 <h4 class="h-font room-price"><span class="text-success fw-bold"> IDR
-                        {{ number_format($room->price) }}</span><span class="text-muted">/night
+                        {{ number_format($room->price) }}</span><span class="text-muted">/hari
                     </span></h4>
                 <h6 style="font-size:10px"; class="text-muted">(max. {{ $room->capacity }} Orang) </h6>
             </div>
@@ -174,8 +174,8 @@
                     <h5 class="desc-subtitle">Prosedur Check-in</h5>
                 </div>
                 <div class="col-md-8 desc-content">
-                    <p>Check in Jam 14:00</p>
-                    <p>Check out Jam 12:00</p>
+                    <p>Check in Jam 08:00</p>
+                    <p>Check out Jam 16:00</p>
                 </div>
             </div>
             <div class="d-flex">
@@ -184,7 +184,7 @@
                 </div>
                 <div class="col-md-8 desc-content">
                     <h6 class="mt-4 desc-content">Merokok</h6>
-                    <p>Dilarang Merokok di ruang tidur, Namun telah disediakan Ruangan Khusus Merokok untuk perokok
+                    <p>Dilarang Merokok di dalam aula, Namun dapat Merokok  diluar aula untuk perokok
                         aktif.</p>
                     <h6 class="mt-4 desc-content">Denda</h6>
                     <p>Checkout tidak boleh melebihi Jam yang telah di tentukan, Jika Pelanggan Checkout melewati Jam
@@ -197,20 +197,10 @@
                     <h5 class="desc-subtitle">Fasilitas</h5>
                 </div>
                 <div class="col-md-8 desc-content">
-                    <h6 class="mt-4 desc-content">Breakfast</h6>
-                    <p>Kami memiliki tambahan pelayanan gratis breakfast kepada para pelanggan, Dengan beberapa menu,
-                        pelanggan dapat memilih menu breakfast.</p>
 
                     <h6 class="mt-4 desc-content">Free Wifi</h6>
-                    <p>Fasilitas terbaik yang ada pada Hotel kami, Kami menyediakan Fasilitas free wifi dengan kecepatan
+                    <p>Fasilitas  yang ada pada Aula kami, Kami menyediakan Fasilitas free wifi dengan kecepatan
                         yang tinggi.</p>
-
-                    <h6 class="mt-4 desc-content">Swimming Pool</h6>
-                    <p>Fasilitas kolam renang yang Luas, Bersih dan Memiliki kedalaman untuk semua umur</p>
-
-                    <h6 class="mt-4 desc-content">Lunch</h6>
-                    <p>Kami memiliki tambahan pelayanan gratis Lunch kepada para pelanggan, Dengan beberapa menu,
-                        pelanggan dapat memilih menu Lunch.</p>
 
                 </div>
             </div>
@@ -227,9 +217,7 @@
             </div>
             <div class="d-flex justify-content-center w-100">
                 <div class="col-12">
-                    <iframe class="w-100 rounded mt-3" height="320px"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.9060098636683!2d106.96529953804958!3d-6.406108795364871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6995d20156e367%3A0x5b7cd089c3c57813!2sSMK%20Bina%20Mandiri%20Multimedia%20Cileungsi!5e0!3m2!1sid!2sid!4v1675517872782!5m2!1sid!2sid"allowfullscreen=""
-                        loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.133539331994!2d123.59652327362822!3d-10.169799209796038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c569ca3bd22c2f3%3A0x2d6d15b21bf70a5e!2sDinas%20Komunikasi%20dan%20Informatika%20(Diskominfo)%20Provinsi%20NTT!5e0!3m2!1sid!2sid!4v1741144298077!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>s
                 </div>
             </div>
         </div>

@@ -10,7 +10,7 @@
                         <div class="container">
                         <div class="card">
                                 <div class="card-header">
-                                  <h4>Tambah Type kamar</h4>
+                                  <h4>Tambah Type Aula</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-auto">
@@ -34,7 +34,7 @@
                                             <div class="row">
                                                 <div class="col-md-10 mt-3">
                                                     <label for="info" class="form-label"> Description  <span style="font-style: italic;">(required)</span></label>
-                                                    <textarea placeholder="Tipe kamar hotel dengan Connecting Room ini cocok untuk kamu yang pergi bersama keluarga besar atau rombongan tetapi ingin memiliki kamar tidur masing-masing." name="info" id="info"rows="3" class="form-control"></textarea>
+                                                    <textarea placeholder="" name="info" id="info"rows="3" class="form-control"></textarea>
                                                 </div>
                                             </div>
 
